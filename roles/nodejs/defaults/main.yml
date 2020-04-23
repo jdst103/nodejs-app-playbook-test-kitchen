@@ -1,0 +1,3 @@
+---
+ansible_distribution_release: "xenial"
+nodejs_version: "8"

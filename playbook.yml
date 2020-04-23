@@ -1,0 +1,83 @@
+---
+- name: Provision App
+  hosts: app
+  remote_user: sudo
+  become: true
+  tasks:
+
+- name: Ensure apt-transport-https is installed.
+  apt:
+    name: apt-transport-https
+    state: present
+
+
+
+
+
+
+
+
+    - name: Update apt-get repo and cache
+      apt: update_cache=yes
+
+    - name: Upgrade all apt packages
+      apt: upgrade=dist
+
+    - name: ensure nginx is at the latest version
+      apt:
+        name: nginx
+        state: present
+
+    - name: start nginx
+      service:
+        name: nginx
+        state: started
+      become: yes
+
+    - name: ensure git is at the latest version
+      apt: name=git state=latest
+
+    - name: ensure nodejs is at the latest version
+      apt:
+        name: nodejs
+        state: present
+
+    - name: ensure nodejs is present
+      apt: name=nodejs state=present
+
+    - name: ensure npm is present
+      apt: name=npm state=present
+
+    - name: install pm2 is with npm
+      command: npm install pm2 -g
+
+# - name: Provision Db
+#   hosts: 192.168.10.150
+#   remote_user: sudo
+#   become: true
+#   tasks:
+#
+#     - name: Update apt-get repo and cache
+#       apt: update_cache=yes
+#
+#     - name: Upgrade all apt packages
+#       apt: upgrade=dist
+#
+#     - name: mongo install key
+#       apt_key:
+#         url: https://www.mongodb.org/static/pgp/server-4.2.asc
+#         state: present
+#
+#
+#     - name: MongoDB - Add Repository
+#       apt_repository:
+#         filename: '/etc/apt/sources.list.d/mongodb-org-4.2.list'
+#         repo: 'deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse'
+#         state: present
+#         update_cache: yes
+#
+#     - name: MongoDB - Install MongoDB
+#       apt: name=mongodb-org state=present update_cache=yes
+#
+#     - name: changing the config on db
+#       command: rm /etc/mongod.conf; ln -s /home/ubuntu/environment/mongod.conf /etc/mongod.conf; systemctl restart mongod; systemctl enable mongod

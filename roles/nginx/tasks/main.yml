@@ -1,0 +1,37 @@
+---
+- name: Update cache repositories
+  apt: update_cache=yes
+
+- name: Upgrade all apt packages
+  apt: upgrade=dist
+
+- name: ensure nginx is at the latest version
+  apt:
+    name: nginx
+    state: present
+    update_cache: "yes"
+  notify:
+  - start nginx
+
+- name: ensure git is at the latest version
+  apt: name=git state=latest update_cache=yes
+
+- name: Remove symlink
+  file:
+    path: "/etc/nginx/sites-available/default"
+    state: absent
+
+- name: copy a file to /etc/nginx/sites-available/proxy.conf
+  template:
+    src: proxy.conf
+    dest: /etc/nginx/sites-available/proxy.conf
+  notify:
+  - restart nginx
+
+- name: Create a symbolic link
+  file:
+    src: /etc/nginx/sites-available/proxy.conf
+    dest: /etc/nginx/sites-enabled/proxy.conf
+    state: link
+  notify:
+  - restart nginx

@@ -1,0 +1,38 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: ansible_playbook
+  hosts: test-kitchen
+  #path for ansible roles
+  # roles_path: roles
+  # ansible_verbose: false
+  # ansible_verbosity: 2
+  # require_ansible_repo: false
+  # #notinstall ansible(true -viceversa)
+  # require_ansible_omnibus: false
+  # #don't install chef - should be false everytime
+  # require_chef_for_busser: false
+  # ansible_connection: ssh
+  playbook: ./app.yml
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: ubuntu-16.04
+    verifier:
+    inspec_tests:
+      - test/integration/default
+    driver:
+    box: ubuntu/xenial64
+
+#  - name: centos-
+
+suites:
+  - name: default
+    run_list:
+    attributes:
+
+#~/devops/molecules-njs-mdb/ansible-test/nodejs

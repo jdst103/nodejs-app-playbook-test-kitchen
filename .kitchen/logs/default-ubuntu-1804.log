@@ -1,0 +1,6 @@
+I, [2020-04-20T21:11:45.757526 #36147]  INFO -- default-ubuntu-1804: -----> Cleaning up any prior instances of <default-ubuntu-1804>
+I, [2020-04-20T21:11:45.757943 #36147]  INFO -- default-ubuntu-1804: -----> Destroying <default-ubuntu-1804>...
+I, [2020-04-20T21:11:45.758765 #36147]  INFO -- default-ubuntu-1804: Finished destroying <default-ubuntu-1804> (0m0.00s).
+I, [2020-04-20T21:11:45.759624 #36147]  INFO -- default-ubuntu-1804: -----> Testing <default-ubuntu-1804>
+I, [2020-04-20T21:11:45.759755 #36147]  INFO -- default-ubuntu-1804: -----> Creating <default-ubuntu-1804>...
+I, [2020-04-20T21:11:45.779778 #36147]  INFO -- default-ubuntu-1804: /opt/chefdk/embedded/lib/ruby/gems/2.6.0/gems/mixlib-shellout-3.0.9/lib/mixlib/shellout/unix.rb:343: warning: Insecure world writable dir /usr/local/bin in PATH, mode 040777

@@ -1,0 +1,31 @@
+---
+driver:
+  name: ec2
+  region: eu-west-1
+  require_chef_omnibus: true
+  instance_type: t2.micro
+  associate_public_ip: true
+  aws_ssh_key_id: /~/.ssh/j-robinson-pizza.pem
+  transport:
+    ssh_key: /~/.ssh/j-robinson-pizza.pem
+
+provisioner:
+  name: ansible_playbook
+  hosts: test-kitchen
+  playbook: ./app.yml
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: ubuntu-16.04
+    verifier:
+    inspec_tests:
+      - test/integration/default
+    driver:
+    box: ubuntu/xenial64
+
+suites:
+  - name: default
+    run_list:
+    attributes:
