@@ -2,10 +2,17 @@
 
 Test kitchen spins up a VM and provisions the VM using the playbook in the root directory app.yml. This playbook calls two roles nginx and nodejs containing our tasks.
 
-NOTE:
-the VM is configured with ubuntu 16.04 and uses a ubuntu/xenial vm box.
+### the test consists of:
+- nginx to be running and enabled
+- expect http status error code 502
+- nodejs to be installed
+- nodejs version > 8
+- pm2 installed
 
 ## SETUP HELP
+
+NOTE:
+the VM is configured with ubuntu 16.04 and uses a ubuntu/xenial vm box.
 
 ### TO download Test Kitchen, CHEFDK was installed. which included the tool INSPEC to run our integration test.
 
@@ -65,4 +72,9 @@ To run the integration test on a AWS instance, we use the kitchen.cloud.yml with
 the command to spin up the AWS instance and test.
 ````
 KITCHEN_YAML=kitchen.cloud.yml kitchen test
+````
+
+the command to destroy the AWS resources.
+````
+KITCHEN_YAML=kitchen.cloud.yml kitchen destroy
 ````

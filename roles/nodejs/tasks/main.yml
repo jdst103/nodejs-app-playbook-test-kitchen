@@ -24,7 +24,7 @@
     state: latest
     update_cache: "yes"
 
-- name: Install "pm2" node.js package globally.
+- name: Install "pm2" node.js package 
   npm:
     name: pm2
     global: yes

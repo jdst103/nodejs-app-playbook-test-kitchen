@@ -5,7 +5,6 @@ driver:
   require_chef_omnibus: true
   instance_type: t2.micro
   associate_public_ip: true
-  aws_ssh_key_id: /~/.ssh/j-robinson-pizza.pem
   transport:
     ssh_key: /~/.ssh/j-robinson-pizza.pem
 
