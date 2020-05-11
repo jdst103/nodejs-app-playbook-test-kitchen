@@ -2,7 +2,7 @@
   "variables": {
     "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
     "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
-    "version" : "{(env `GIT_TAG_NAME`)}"
+    "version" : "john"
   },
   "builders": [{
     "type": "amazon-ebs",
@@ -18,12 +18,12 @@
       "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
       "root-device-type": "ebs"
       },
-      "owners": ["988303749223"],
+      "owners": ["099720109477"],
       "most_recent": true
     },
     "instance_type": "t2.micro",
     "ssh_username": "ubuntu",
-    "ami_name": "jason-njs-{{`version`}}"
+    "ami_name": "jason-njs-{{timestamp}}"
   }],
   "provisioners": [
     {
