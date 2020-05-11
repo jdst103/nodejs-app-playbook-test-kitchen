@@ -27,12 +27,8 @@
   }],
   "provisioners": [
     {
-      "type": "shell",
-      "inline": ["sudo apt-get install git", "sudo git clone git@github.com:jdst103/nodejs-app-playbook-test-kitchen.git", "cd nodejs-app-playbook-test-kitchen"]
-    },
-    {
     "type": "ansible-local",
-    "playbook_file": "/nodejs-app-playbook-test-kitchen/app.yml"
+    "playbook_file": "app.yml"
     },
     {
       "type": "shell",
