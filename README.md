@@ -83,11 +83,11 @@ KITCHEN_YAML=kitchen.cloud.yml kitchen destroy
 
 Creates an image from an instance that has stable test results to be used to spin up the production environment.
 
-run
+run the command:
 ````
 packer build packerapp.json
 ````
 
- This file provisions a ubuntu xenial 16.04 AMI (owner is amazon) with the playbook 'app.yml'. The JS app is then synced onto the instance. Packer converts this temporary instance to an image.
+ This file provisions a ubuntu xenial 16.04 AMI (owner is amazon) with the playbook 'app.yml'. The JS app (AppFolder) is then synced onto the instance. Packer converts this temporary instance to an image.
 
- the source_ami_filter finds the ami id on amazon to base our configurations for this temporary instance. once the AMI is created, this temporary instance is deleted. 
+ the source_ami_filter finds the ami id on amazon to base our configurations for this temporary instance. once the AMI is created, this temporary instance is deleted.
